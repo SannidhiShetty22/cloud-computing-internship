@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram name="Cloud Architecture" id="college-cloud-architecture">
+    <mxGraphModel dx="1373" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#1f2937;align=center;verticalAlign=middle" value="College Management System — 3-Tier Cloud Architecture" vertex="1">
+          <mxGeometry height="50" width="800" x="400" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="client" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#4a6cf7;fontSize=16;spacing=10;" value="&lt;b&gt;Users / Client Tier&lt;/b&gt;&lt;br&gt;Students • Faculty • Admin&lt;br&gt;Web Browser" vertex="1">
+          <mxGeometry height="110" width="380" x="610" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;spacing=10;" value="&lt;b&gt;&amp;nbsp;Cloud Load Balancer&lt;/b&gt;&lt;br&gt;HTTPS termination + traffic distribution" vertex="1">
+          <mxGeometry height="100" width="440" x="580" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="pXrceoT743_CHyMCP1t3-1" edge="1" parent="1" source="app1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pXrceoT743_CHyMCP1t3-3" edge="1" parent="1" source="app1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580.3333333333333" y="508.33333333333326" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pXrceoT743_CHyMCP1t3-12" edge="1" parent="1" source="app1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#70ad47;fontSize=15;spacing=10;" value="&lt;b&gt;App Server 1&lt;/b&gt;&lt;br&gt;Node.js + Express API" vertex="1">
+          <mxGeometry height="105" width="300" x="280" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="pXrceoT743_CHyMCP1t3-2" edge="1" parent="1" source="app2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#70ad47;fontSize=15;spacing=10;" value="&lt;b&gt;App Server 2&lt;/b&gt;&lt;br&gt;Node.js + Express API" vertex="1">
+          <mxGeometry height="105" width="300" x="1010" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#cc0000;fontSize=14;spacing=10;" value="&lt;b&gt;Redis Cache&lt;/b&gt;&lt;br&gt;Fast access to frequently used data&lt;br&gt;Reduces DB load" vertex="1">
+          <mxGeometry height="105" width="300" x="650" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d9eaf7;strokeColor=#3d85c6;fontSize=14;spacing=10;" value="&lt;b&gt;MySQL Database&lt;/b&gt;&lt;br&gt;Students • Faculty • Courses • Marks • Attendance" vertex="1">
+          <mxGeometry height="130" width="350" x="430" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d9d2e9;strokeColor=#674ea7;fontSize=14;spacing=10;" value="&lt;b&gt;Object Storage (Amazon S3)&lt;/b&gt;&lt;br&gt;Profile photos • Documents • Uploaded files" vertex="1">
+          <mxGeometry height="130" width="350" x="840" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="scale" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#e69138;fontSize=13;spacing=8;" value="&lt;b&gt;Horizontal Scaling&lt;/b&gt;&lt;br&gt;Add more app-server instances when traffic increases" vertex="1">
+          <mxGeometry height="100" width="270" x="1250" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="1" source="client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2" target="lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="1" source="lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2" target="app1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="1" source="lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2" target="app2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="1" source="app1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="db" value="read/write">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="705" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" edge="1" parent="1" source="app2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="storage" value="files">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1235" y="715" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" edge="1" parent="1" source="lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;dashed=1" target="scale" value="scale out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pXrceoT743_CHyMCP1t3-9" edge="1" parent="1" source="app2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.584;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
