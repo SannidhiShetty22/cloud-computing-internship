@@ -1,0 +1,39 @@
+const mysql = require("mysql2/promise");
+
+const pool = mysql.createPool({
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT) || 3306,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+    timezone: "Z",
+    dateStrings: true
+});
+
+function normalizeResult(result) {
+    if (Array.isArray(result)) {
+        return { rows: result, rowCount: result.length };
+    }
+    return {
+        rows: [],
+        rowCount: result.affectedRows ?? 0,
+        insertId: result.insertId ?? undefined
+    };
+}
+
+module.exports = {
+    async query(sql, params) {
+        const [result] = await pool.query(sql, params);
+        return normalizeResult(result);
+    },
+    async execute(sql, params) {
+        const [result] = await pool.execute(sql, params);
+        return normalizeResult(result);
+    },
+    getConnection() {
+        return pool.getConnection();
+    }
+};
